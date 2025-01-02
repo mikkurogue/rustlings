@@ -4,6 +4,16 @@ fn bigger(a: i32, b: i32) -> i32 {
     // Do not use:
     // - another function call
     // - additional variables
+
+    if a > b {
+        return a;
+    } else if b > a {
+        return b;
+    } else if a == b {
+        return a;
+    } else {
+        return 0;
+    }
 }
 
 fn main() {
