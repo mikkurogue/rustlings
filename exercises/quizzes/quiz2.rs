@@ -26,8 +26,23 @@ enum Command {
 mod my_module {
     use super::Command;
 
-    // TODO: Complete the function as described above.
-    // pub fn transformer(input: ???) -> ??? { ??? }
+    // Create a vector of a string and a command.
+    // String is the input text (?) and Command is defined above as an enum
+    // then create a mutable string Vector with the vec! macro to store the output
+    // Iterate over the input vector and match the command to the enum
+    // and implement their outcomes
+    // afterwards return the mutable  string Vector output
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+        let mut output: Vec<String> = vec![];
+        for (string, command) in input.iter() {
+            match command {
+                Command::Uppercase => output.push(string.to_uppercase()),
+                Command::Trim => output.push(string.trim().to_string()),
+                Command::Append(n) => output.push(string.to_owned() + &"bar".repeat(*n)),
+            }
+        }
+        output
+    }
 }
 
 fn main() {
@@ -36,8 +51,8 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
-    // TODO: What do we need to import to have `transformer` in scope?
-    // use ???;
+    // im too stupid to understand why we need `super` here
+    use super::my_module::transformer;
     use super::Command;
 
     #[test]
