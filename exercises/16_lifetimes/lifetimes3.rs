@@ -1,9 +1,10 @@
 // Lifetimes are also needed when structs hold references.
 
 // TODO: Fix the compiler errors about the struct.
-struct Book {
-    author: &str,
-    title: &str,
+// is it a good idea to give the lifetime tag a "name" that refelcts the structs or object?
+struct Book<'book> {
+    author: &'book str,
+    title: &'book str,
 }
 
 fn main() {
